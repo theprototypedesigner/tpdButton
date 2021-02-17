@@ -21,6 +21,7 @@ class AdeButton {
     bool _longPress;
     bool _singlePress;
     bool _doublePress;
+    bool _released;
     byte _multiPress;
   
     // State variables 
@@ -45,6 +46,7 @@ class AdeButton {
     void setLongPressDelay(uint16_t value);
     void update();
     bool isPressed();
+    bool isReleased();
     bool singlePress();
     bool longPress();
     bool doublePress();

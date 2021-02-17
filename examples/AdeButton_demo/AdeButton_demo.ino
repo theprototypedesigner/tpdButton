@@ -49,4 +49,7 @@ void loop() {
   if(button2.isPressed()) {
     Serial.println("You are pressing button 2");
   }
+  if(button2.isReleased()) {
+    Serial.println("Button 2 has been released");
+  }
 }

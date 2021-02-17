@@ -46,6 +46,7 @@ int AdeButton::checkPress()
   
   else if (state == AWAIT_RELEASE) {
     if (this->getState() == _restState) {
+      _released = true;
       if ((millis() - _eventTime) > _longPressDelay) {
         state = AWAIT_PRESS;
         return -1;
@@ -83,7 +84,13 @@ void AdeButton::update() {
 }
 
 bool AdeButton::isPressed() {
-  return (this->getState() == LOW);
+  return (!(this->getState() == _restState));
+}
+
+bool AdeButton::isReleased() {
+  bool var = _released;
+  _released = false;
+  return (var);
 }
 
 bool AdeButton::singlePress() {
