@@ -44,11 +44,11 @@ class AdeButton {
     void setMultiPressDelay(uint16_t value);
     void setLongPressDelay(uint16_t value);
     void update();
-    bool AdeButton::isPressed();
-    bool AdeButton::singlePress();
-    bool AdeButton::longPress();
-    bool AdeButton::doublePress();
-    bool AdeButton::multiPress(byte nOfPress);
+    bool isPressed();
+    bool singlePress();
+    bool longPress();
+    bool doublePress();
+    bool multiPress(byte nOfPress);
  
     // status, number of clicks since last update
     // -1 = button held, 0 = button up, 1, 2, ... number of times button clicked
