@@ -1,3 +1,12 @@
+/*
+ * TpdButton.h - Simple intuitive Arduino library
+ * to read different events on a single button.
+ * 
+ * Author: Ubaldo Andrea Desiato | theprototypedesigner
+ * Created: 7 Feb 2021
+ * Last update: 18 Feb 2023
+ */
+
 #ifndef TPD_BUTTON_H
 #define TPD_BUTTON_H
 
@@ -12,8 +21,8 @@ class TpdButton {
   private:
     byte _pin;    
     byte _restState;
-    byte lastReading;
-    byte buttonState;
+    byte _lastReading;
+    byte _buttonState;
     uint16_t _debounceDelay   = DEFAULT_DEBOUNCE_DELAY;
     uint16_t _multiPressDelay      = DEFAULT_MULTI_PRESS_DELAY;
     uint16_t _longPressDelay       = DEFAULT_LONGPRESS_DELAY;
@@ -24,9 +33,8 @@ class TpdButton {
     bool _released;
     byte _multiPress;
   
-    // State variables 
     unsigned long _eventTime;
-    unsigned long lastDebounceTime;
+    unsigned long _lastDebounceTime;
     
     enum state_t { AWAIT_PRESS, DEBOUNCE_PRESS, AWAIT_RELEASE, DEBOUNCE_RELEASE, AWAIT_MULTI_PRESS } state;
     int _pressCount;
@@ -52,8 +60,6 @@ class TpdButton {
     bool doublePress();
     bool multiPress(byte nOfPress);
  
-    // status, number of clicks since last update
-    // -1 = button held, 0 = button up, 1, 2, ... number of times button clicked
 };
 
 #endif

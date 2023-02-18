@@ -1,3 +1,12 @@
+/*
+ * TpdButton.cpp - Simple intuitive Arduino library
+ * to read different events on a single button.
+ * 
+ * Author: Ubaldo Andrea Desiato | theprototypedesigner
+ * Created: 7 Feb 2021
+ * Last update: 18 Feb 2023
+ */
+
 #include "TpdButton.h"
 
 TpdButton::TpdButton(uint8_t pin, uint8_t restState, uint8_t PinMode)
@@ -6,7 +15,7 @@ TpdButton::TpdButton(uint8_t pin, uint8_t restState, uint8_t PinMode)
   _restState = restState;
   pinMode(_pin, PinMode);
   state = AWAIT_PRESS;
-  buttonState = _restState;
+  _buttonState = _restState;
 }
 
 //Set attributes
@@ -17,21 +26,21 @@ void TpdButton::setLongPressDelay(uint16_t value){_longPressDelay = value;}
 void TpdButton::debounce() {
   byte newReading = digitalRead(_pin);
 
-  if (newReading != lastReading)
+  if (newReading != _lastReading)
   {
-    lastDebounceTime = millis();
+    _lastDebounceTime = millis();
   }
 
-  if (millis() - lastDebounceTime > _debounceDelay) // change variable
+  if (millis() - _lastDebounceTime > _debounceDelay) // change variable
   {
-    buttonState = newReading;
+    _buttonState = newReading;
   }
-  lastReading = newReading;
+  _lastReading = newReading;
 }
 
 byte TpdButton::getState() {
   this->debounce();
-  return buttonState;
+  return _buttonState;
 }
 
 int TpdButton::checkPress()
