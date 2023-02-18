@@ -1,0 +1,6 @@
+TpdButton   KEYWORD1
+singlePress KEYWORD2
+doublePress KEYWORD2
+longPress   KEYWORD2
+multiPress  KEYWORD2
+isReleased  KEYWORD2
